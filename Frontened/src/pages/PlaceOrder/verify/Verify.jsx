@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import { StoreContext } from '../../../context/StoreContext'
 import axios from 'axios'
 import { useEffect } from 'react'
+import toast from 'react-hot-toast'
 
 const Verify = () => {
 
@@ -18,9 +19,11 @@ const Verify = () => {
         const response = await axios.post(url+"/api/order/verify",{success,orderId})
         if(response.data.success){
             navigate("/myorders")
+            toast.success("Order placed successfully")
         }
         else{
             navigate("/")
+            toast.error("unable to placed order")
         }
     }
     useEffect (()=>{

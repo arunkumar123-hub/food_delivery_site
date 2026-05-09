@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from 'axios';
+import toast from "react-hot-toast";
 
 export const StoreContext = createContext(null);
 
@@ -19,6 +20,7 @@ const StoreContextProvider = (props) => {
         }
         if(token){
             await axios.post(url+"/api/cart/add",{itemId},{headers:{token}})
+            toast.success("Item added to cart")
         }
     }
 
@@ -26,6 +28,7 @@ const StoreContextProvider = (props) => {
         setCartitems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
         if(token){
             await axios.post(url+"/api/cart/remove",{itemId},{headers:{token}})
+            toast.success("Item removed from cart")
         }
     }
     

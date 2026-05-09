@@ -9,6 +9,7 @@ import { useState } from 'react'
 import LoginPopup from './components/LoginPopup/LoginPopup'
 import Verify from './pages/PlaceOrder/verify/Verify'
 import MyOrders from './pages/MyOrders/MyOrders'
+import VerifyEmail from './components/LoginPopup/verifyemail/VerifyEmail'
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <Route path='/order'element={<PlaceOrder/>}/>
         <Route path='/verify'element={<Verify/>}/>
         <Route path='/myorders'element={<MyOrders/>}/>
+        <Route path='/verify-email'element={<VerifyEmail/>}/>
       </Routes>
     </div>
     <Footer/>

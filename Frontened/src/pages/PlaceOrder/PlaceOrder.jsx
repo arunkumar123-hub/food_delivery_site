@@ -86,10 +86,11 @@ const navigate = useNavigate();
           <input required name='state'onChange={onChangeHandler}value={data.state}type="text" placeholder='State' />
         </div>
         <div className="multi-fields">
-          <input required name='zipcode'onChange={onChangeHandler}value={data.zipcode}type="text" placeholder='Zip code' />
+          <input required name='zipcode'onChange={onChangeHandler}value={data.zipcode}type="text"maxlength="6"pattern="[1-9][0-9]{5}"
+          inputMode='numeric' placeholder=' Enter 6 digits zip code' />
           <input required name='country'onChange={onChangeHandler}value={data.country}type="text" placeholder='Country' />
         </div>
-        <input required name='phone'onChange={onChangeHandler}value={data.phone}type="text" placeholder='phone' />
+        <input required name='phone'onChange={onChangeHandler}value={data.phone}type="tel" placeholder='Enter 10 digit mobile number'maxLength={10}/>
       </div>
       <div className="place-order-right">
          <div className="cart-total">

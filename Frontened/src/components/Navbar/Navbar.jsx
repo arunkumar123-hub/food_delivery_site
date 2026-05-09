@@ -8,14 +8,14 @@ import toast from 'react-hot-toast';
 const Navbar = ({setShowLogin}) => {
 
   const [menu,setMenu]=useState("home");
-  const {getTotalCartAmount,token,setToken}=useContext(StoreContext);
+  const {getTotalCartAmount,token,setToken,setCartitems}=useContext(StoreContext);
   const navigate=useNavigate();
   const logout=()=>{
     localStorage.removeItem("token");
     setToken("");
-    navigate("/");
-    window.location.reload();
+    setCartitems({})
     toast.success("Logout successfully")
+    navigate("/");
   }
 
   return (
@@ -28,8 +28,7 @@ const Navbar = ({setShowLogin}) => {
         <a href='#footer' onClick={()=>setMenu("contact us")} className={menu==="contact us"? "active":""}>contact us</a>
       </ul>
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
-        <div className="navbar-search-icon">
+        <div className="navbar-icon">
           <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link>
           <div className={getTotalCartAmount()===0 ?"":"dot"}></div>
         </div>

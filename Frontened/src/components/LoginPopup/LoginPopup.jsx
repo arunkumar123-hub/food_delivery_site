@@ -25,24 +25,24 @@ const onChangeHandler = (event) =>{
 
 const onLogin=async(event)=>{
   event.preventDefault();
-  let newUrl = url;
   if(currState==="Login"){
-    newUrl+="/api/user/login"
-    
-  }
-else{
-  newUrl+="/api/user/register"
-}
-const response=await axios.post(newUrl,data);
-
-if(response.data.success){
-  setToken(response.data.token);
-  localStorage.setItem("token",response.data.token)
-  setShowLogin(false)
-  window.location.reload();
-  toast.success(response.data.message)
-}else{
-  toast.error(response.data.message)
+    const response = await axios.post(url+"/api/user/login",data)
+      if(response.data.success){
+      setToken(response.data.token);
+      localStorage.setItem("token",response.data.token)
+      setShowLogin(false)
+      toast.success(response.data.message)
+      }else{
+      toast.error(response.data.message)
+      }
+    }else{
+      const response = await axios.post(url+"/api/user/register",data)
+      if(response.data.success){
+        toast.success(response.data.message)
+        setShowLogin(false)
+      }else{
+        toast.error(response.data.message)
+      }
 }
 
 }
